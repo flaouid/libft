@@ -6,33 +6,31 @@
 /*   By: flaouid <laouid.ferdaous@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 13:25:59 by flaouid           #+#    #+#             */
-/*   Updated: 2019/11/07 14:29:16 by flaouid          ###   ########.fr       */
+/*   Updated: 2019/11/18 16:36:34 by flaouid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *ptr)
+int	ft_atoi(const char *str)
 {
-	unsigned long int i;
-	unsigned long int nb;
-	unsigned long int neg;
+	int i;
+	int nb;
+	int neg;
 
 	i = 0;
 	nb = 0;
 	neg = 1;
-	while (ptr[i] <= ' ')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' \
+		|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
 		i++;
-	while (ptr[i] == '+' || ptr[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (ptr[i] == '-')
+		if (str[i] == '-')
 			neg *= -1;
 		i++;
 	}
-	while (ptr[i] >= '0' && ptr[i] <= '9')
-	{
-		nb = (nb * 10) + (ptr[i] - '0');
-		i++;
-	}
-	return (nb * neg);
+	while (str[i] >= '0' && str[i] <= '9')
+		nb = (nb * 10) + (str[i++] - '0');
+	return (neg * nb);
 }

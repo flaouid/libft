@@ -6,39 +6,27 @@
 /*   By: flaouid <laouid.ferdaous@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:04:21 by flaouid           #+#    #+#             */
-/*   Updated: 2019/11/07 14:23:02 by flaouid          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:55:38 by flaouid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_putchar(char c)
+void				ft_putnbr_fd(int n, int fd)
 {
-	write(1, &c, 1);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long nbr;
+	unsigned int	nbr;
 
 	nbr = n;
-	if (n <= -2147483648)
+	if (n < 0)
 	{
-		ft_putchar('-');
-		write(fd, &"2147483648", 10);
+		nbr = -n;
+		ft_putchar_fd('-', fd);
 	}
-	else if (n < 0)
+	if (nbr > 9)
 	{
-		write(fd, "-", 1);
-		n = -n;
+		ft_putnbr_fd(nbr / 10, fd);
+		ft_putnbr_fd(nbr % 10, fd);
 	}
-	if (n >= 10)
-	{
-		ft_putnbr_fd(n, fd);
-		ft_putchar(n % 10 + '0');
-	}
-	if (n >= 0 && n < 10)
-	{
-		ft_putchar(n + '0');
-	}
+	else
+		ft_putchar_fd(nbr + '0', fd);
 }

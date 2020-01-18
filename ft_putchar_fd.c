@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flaouid <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flaouid <laouid.ferdaous@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:26:54 by flaouid           #+#    #+#             */
-/*   Updated: 2019/11/06 14:14:21 by flaouid          ###   ########.fr       */
+/*   Updated: 2019/11/14 16:43:39 by flaouid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(int c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	if (c < 0)
 		return ;

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flaouid <laouid.ferdaous@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 14:45:19 by flaouid           #+#    #+#             */
-/*   Updated: 2019/11/13 16:43:40 by flaouid          ###   ########.fr       */
+/*   Created: 2019/11/18 11:10:08 by flaouid           #+#    #+#             */
+/*   Updated: 2019/11/18 15:14:52 by flaouid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+int	ft_lstsize(t_list *lst)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	int	next;
+
+	next = 0;
+	if (lst)
+		while (lst != NULL)
+		{
+			lst = lst->next;
+			next++;
+		}
+	return (next);
 }

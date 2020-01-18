@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flaouid <laouid.ferdaous@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 10:39:51 by flaouid           #+#    #+#             */
-/*   Updated: 2019/11/18 17:06:05 by flaouid          ###   ########.fr       */
+/*   Created: 2019/11/13 13:00:58 by flaouid           #+#    #+#             */
+/*   Updated: 2019/11/13 16:53:14 by flaouid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memcpy(void *dst, const void *src, size_t n)
+char		*ft_itoa(int n)
 {
-	unsigned int	i;
-	unsigned char	*dest;
-	unsigned char	*source;
+	char	*output;
 
-	if (!dst && !src)
+	if (!(output = (char *)malloc(sizeof(char) * 2)))
 		return (NULL);
-	i = 0;
-	dest = (unsigned char*)dst;
-	source = (unsigned char*)src;
-	while (i < n)
+	if (n == -2147483648)
+		return (output = ft_strdup("-2147483648"));
+	if (n < 0)
 	{
-		dest[i] = source[i];
-		i++;
+		output[0] = '-';
+		output[1] = '\0';
+		output = ft_strjoin(output, ft_itoa(-n));
 	}
-	return (dst);
+	else if (n >= 10)
+		output = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		output[0] = n + '0';
+		output[1] = '\0';
+	}
+	return (output);
 }

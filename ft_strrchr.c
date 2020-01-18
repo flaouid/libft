@@ -6,22 +6,26 @@
 /*   By: flaouid <laouid.ferdaous@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:07:57 by flaouid           #+#    #+#             */
-/*   Updated: 2019/11/07 13:49:57 by flaouid          ###   ########.fr       */
+/*   Updated: 2019/11/13 17:21:15 by flaouid          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-const char	*ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
-	int i;
+	int		i;
+	char	*p;
 
 	i = 0;
-
+	while (s[i] != '\0')
+		i++;
+	p = (char *)&s[i];
 	while (i >= 0)
 	{
-		if (s[i] == c)
-			return ((char*)s + 1);
+		if (c == s[i])
+			return (p);
+		p--;
 		i--;
 	}
 	return (0);
